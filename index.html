@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Médias</title>
+</head>
+<body>
+    <h1>Calculadora de Médias</h1>
+    <div id="calculadora">
+        <button onclick="startCalculadora()">Iniciar</button>
+    </div>
+
+    <script>
+        function startCalculadora() {
+            let kabo = true;
+
+            while (kabo) {
+                let nota1 = parseFloat(prompt("Digite a primeira nota:"));
+                let nota2 = parseFloat(prompt("Digite a segunda nota:"));
+                let media;
+
+                let continuar1 = prompt("Deseja continuar? (s/n)").toLowerCase();
+                if (continuar1 === "s") {
+                    let nota3 = parseFloat(prompt("Digite a terceira nota:"));
+                    let continuar2 = prompt("Deseja continuar? (s/n)").toLowerCase();
+                    if (continuar2 === "s") {
+                        let nota4 = parseFloat(prompt("Digite a quarta nota:"));
+                        media = (nota1 + nota2 + nota3 + nota4) / 4;
+                        alert("Média: " + media);
+                    } else {
+                        media = (nota1 + nota2 + nota3) / 3;
+                        alert("Média: " + media);
+                    }
+                } else {
+                    media = (nota1 + nota2) / 2;
+                    alert("Média: " + media);
+                }
+
+                let continuarCalculadora = prompt("Deseja fazer outro cálculo? (s/n)").toLowerCase();
+                if (continuarCalculadora === "n") {
+                    kabo = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
