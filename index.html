@@ -1,48 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Médias</title>
+  <meta charset="UTF-8">
+  <title>Média de Valores</title>
 </head>
 <body>
-    <h1>Calculadora de Médias</h1>
-    <div id="calculadora">
-        <button onclick="startCalculadora()">Iniciar</button>
-    </div>
+  <h1>Calculadora de Média</h1>
 
-    <script>
-        function startCalculadora() {
-            let kabo = true;
+  <label for="valores">De quais valores você deseja tirar a média? (use . ao invés de ,)</label><br>
+  <input type="text" id="valores" placeholder="Ex: 1.5 2.3 3.7">
+  <button onclick="calcularMedia()">Calcular Média</button>
 
-            while (kabo) {
-                let nota1 = parseFloat(prompt("Digite a primeira nota:"));
-                let nota2 = parseFloat(prompt("Digite a segunda nota:"));
-                let media;
+  <p id="resultado"></p>
 
-                let continuar1 = prompt("Deseja continuar? (s/n)").toLowerCase();
-                if (continuar1 === "s") {
-                    let nota3 = parseFloat(prompt("Digite a terceira nota:"));
-                    let continuar2 = prompt("Deseja continuar? (s/n)").toLowerCase();
-                    if (continuar2 === "s") {
-                        let nota4 = parseFloat(prompt("Digite a quarta nota:"));
-                        media = (nota1 + nota2 + nota3 + nota4) / 4;
-                        alert("Média: " + media);
-                    } else {
-                        media = (nota1 + nota2 + nota3) / 3;
-                        alert("Média: " + media);
-                    }
-                } else {
-                    media = (nota1 + nota2) / 2;
-                    alert("Média: " + media);
-                }
+  <script>
+    function calcularMedia() {
+      // Pega os valores digitados e transforma em array de números
+      let entrada = document.getElementById('valores').value;
+      let lista = entrada.split(' ').map(Number);
 
-                let continuarCalculadora = prompt("Deseja fazer outro cálculo? (s/n)").toLowerCase();
-                if (continuarCalculadora === "n") {
-                    kabo = false;
-                }
-            }
-        }
-    </script>
+      // Calcula o total e a média
+      let total = lista.reduce((acc, val) => acc + val, 0);
+      let media = total / lista.length;
+
+      // Mostra o resultado
+      document.getElementById('resultado').innerText = `A média dos valores é: ${media}`;
+    }
+  </script>
 </body>
 </html>
